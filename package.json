@@ -1,0 +1,128 @@
+{
+  "name": "protonnet",
+  "publisher": "XmobiTea Family",
+  "version": "1.0.0",
+  "displayName": "ProtonNet Server Template for vscode",
+  "description": "Extension for vscode support for create solution template WebApiServer, SocketServer, or item template RequestHandler, EventHandler...",
+  "author": "XmobiTea Family",
+  "qna": "https://github.com/XmobiTea-Family/ProtonNet.Solution.VisualStudioCodeTemplate/issues",
+  "icon": "images/icon.png",
+  "preview": false,
+  "bugs": {
+    "url": "https://github.com/XmobiTea-Family/ProtonNet.Solution.VisualStudioCodeTemplate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XmobiTea-Family/ProtonNet.Solution.VisualStudioCodeTemplate"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "multi-root ready",
+    ".NET",
+    "ASP.NET",
+    ".NET Core",
+    ".NET Framework",
+    "dotnet",
+    "protonnet",
+    "proton net",
+    "proton",
+    "server"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "protonnet.newProject",
+          "group": "ProtonNet",
+          "when": "explorerResourceIsRoot"
+        },
+        {
+          "command": "protonnet.addRequestHandler",
+          "group": "ProtonNet",
+          "when": "!explorerResourceIsRoot && explorerResourceIsFolder"
+        },
+        {
+          "command": "protonnet.addEventHandler",
+          "group": "ProtonNet",
+          "when": "!explorerResourceIsRoot && explorerResourceIsFolder"
+        },
+        {
+          "command": "protonnet.addWebApiController",
+          "group": "ProtonNet",
+          "when": "!explorerResourceIsRoot && explorerResourceIsFolder"
+        },
+        {
+          "command": "protonnet.addWebApiHtml",
+          "group": "ProtonNet",
+          "when": "!explorerResourceIsRoot && explorerResourceIsFolder"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "protonnet.newProject",
+        "title": "[ProtonNet] Create New Solution...",
+        "category": "ProtonNet"
+      },
+      {
+        "command": "protonnet.addRequestHandler",
+        "title": "[ProtonNet] Add New RequestHandler item...",
+        "category": "ProtonNet"
+      },
+      {
+        "command": "protonnet.addEventHandler",
+        "title": "[ProtonNet] Add New EventHandler item...",
+        "category": "ProtonNet"
+      },
+      {
+        "command": "protonnet.addWebApiController",
+        "title": "[ProtonNet] Add New WebApiController item...",
+        "category": "ProtonNet"
+      },
+      {
+        "command": "protonnet.addWebApiHtml",
+        "title": "[ProtonNet] Add New WebApiHtml item...",
+        "category": "ProtonNet"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.8",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.11.1",
+    "typescript": "^5.6.2"
+  },
+  "files": [
+    "out",
+    "media",
+    "content",
+    "README.md",
+    "images",
+    "package.json"
+  ],
+  "extensionDependencies": [
+    "ms-dotnettools.vscode-dotnet-runtime",
+    "ms-dotnettools.csharp",
+    "ms-dotnettools.csdevkit"
+  ]
+}

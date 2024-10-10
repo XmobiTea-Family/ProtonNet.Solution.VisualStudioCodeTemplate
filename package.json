@@ -1,8 +1,8 @@
 {
   "name": "protonnet",
-  "publisher": "XmobiTea Family",
-  "version": "1.0.0",
-  "displayName": "ProtonNet Server Template for vscode",
+  "displayName": "ProtonNet Template for vscode",
+  "publisher": "XmobiTea",
+  "version": "1.0.1",
   "description": "Extension for vscode support for create solution template WebApiServer, SocketServer, or item template RequestHandler, EventHandler...",
   "author": "XmobiTea Family",
   "qna": "https://github.com/XmobiTea-Family/ProtonNet.Solution.VisualStudioCodeTemplate/issues",

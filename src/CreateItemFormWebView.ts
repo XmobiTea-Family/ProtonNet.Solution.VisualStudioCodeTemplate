@@ -176,7 +176,7 @@ export class CreateItemFormWebView {
         }
 
         fs.writeFileSync(finalServerFullPath, fs.readFileSync(path.join(serverFullPath, templateName + extensionName)).toString()
-            .replaceAll("__Server__", namespace)
+            .replaceAll("__Namespace__", namespace)
             .replaceAll(templateName, finalClassname)
             .replaceAll("__CodePrefix__", codePrefix)
         );

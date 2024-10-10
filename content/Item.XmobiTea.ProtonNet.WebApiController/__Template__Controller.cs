@@ -3,7 +3,7 @@ using XmobiTea.ProtonNet.Server.WebApi.Controllers.Attribute;
 using XmobiTea.ProtonNetCommon;
 using XmobiTea.ProtonNetCommon.Extensions;
 
-namespace __Server__
+namespace __Namespace__
 {
     [Route("/__CodePrefix__")]
     class __Template__Controller : WebApiController

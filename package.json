@@ -1,8 +1,8 @@
 {
   "name": "protonnet",
-  "publisher": "XmobiTea Family",
-  "version": "1.0.0",
-  "displayName": "ProtonNet Server Template for vscode",
+  "displayName": "ProtonNet Template for vscode",
+  "publisher": "XmobiTea",
+  "version": "1.0.2",
   "description": "Extension for vscode support for create solution template WebApiServer, SocketServer, or item template RequestHandler, EventHandler...",
   "author": "XmobiTea Family",
   "qna": "https://github.com/XmobiTea-Family/ProtonNet.Solution.VisualStudioCodeTemplate/issues",
@@ -99,7 +99,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "build": "vsce package"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.8",

@@ -1,10 +1,30 @@
+![GitHub release](https://img.shields.io/github/release/XmobiTea-Family/ProtonNetSolution.svg)
+![License](https://img.shields.io/github/license/XmobiTea-Family/ProtonNetSolution)
+[![GitHub star chart](https://img.shields.io/github/stars/XmobiTea-Family/ProtonNetSolution?style=social)](https://star-history.com/#XmobiTea-Family/ProtonNetSolution)
+
 
 # ProtonNet Template for Visual Studio Code
 
 Welcome to the **ProtonNet** template for Visual Studio Code!  
 This tool is designed to streamline and optimize the development process for projects within the [ProtonNet Server](https://protonnetserver.com) ecosystem.
 
-## Features
+## I. How to install
+Two way to install ProtonNet Template for Visual Studio Code, using Visual Studio Code:
+* Install via Marketplace Extensions
+  1. open `View/Extensions`
+  2. type `ProtonNet` in *Search Extensions in Marketplace*, then Enter
+  3. press `Install`
+
+![alt text](images/image-8.png)
+---
+* Install from VSIX
+  1. open `View/Extensions`
+  2. download the newest release (example `protonnet-1.0.2.vsix`) ProtonNet Template for Visual Studio Code [Release](https://github.com/XmobiTea-Family/ProtonNet.Solution.VisualStudioCodeTemplate/releases)
+  3. press `Install from VSIX...` like this picture then choose `ProtonNet Template` version, which you has download on step 2.
+
+![alt text](images/image-9.png)
+---
+## II. Features
 
 - **Create SocketServer Project** (for building `SocketServer` applications).
 - **Create WebApiServer Project** (for building `WebApiServer` applications).
@@ -14,12 +34,12 @@ This tool is designed to streamline and optimize the development process for pro
 - **WebApiController**: Create a controller class to handle API requests or browser access (specific to `WebApiServer`).
 - **WebApiHtml**: Generate an HTML view for the web API (specific to `WebApiServer`).
 
-## Requirements
+## III. Requirements
 
 - If your project uses **.NET Core**: Download **.NET** here: [Download .NET](https://dotnet.microsoft.com/en-us/download/dotnet)
 - If your project uses **.NET Framework**: Download **.NET Framework** here: [Download .NET Framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 
-## Getting Started
+## IV. Getting Started
 
 ### Creating a Project
 
@@ -65,7 +85,7 @@ This tool is designed to streamline and optimize the development process for pro
 
 3. Add your logic to the `Handle()` method and you're all set!
 
-## Release Notes
+## V. Release Notes
 
 ### Version 1.0.0
 

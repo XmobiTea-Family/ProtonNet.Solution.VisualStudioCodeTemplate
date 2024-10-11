@@ -4,7 +4,7 @@ using XmobiTea.ProtonNet.Server.Handlers;
 using XmobiTea.ProtonNet.Server.Handlers.Attributes;
 using XmobiTea.ProtonNet.Server.Models;
 
-namespace __Server__
+namespace __Namespace__
 {
     [AllowAnonymous]
     class __Template__RequestHandler : RequestHandler

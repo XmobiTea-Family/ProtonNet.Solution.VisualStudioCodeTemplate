@@ -37,7 +37,9 @@ export class CreateSolutionFormWebView {
                 <!-- ProtonNet Version -->
                 <div class="form-group">
                     <label for="protonNetVersion">ProtonNet Version:</label>
-                    <input type="text" id="protonNetVersion" name="protonNetVersion" value="${data.protonNetVersion}" required />
+                    <select id="protonNetVersion" name="protonNetVersion" required>
+                        <option value="1.0.4" ${data.protonNetVersion == '1.0.4' ? 'selected' : ''}>1.0.4</option>
+                    </select>
                 </div>
 
                 <!-- Target Runtime Dropdown -->
@@ -63,6 +65,33 @@ export class CreateSolutionFormWebView {
             </form>
 
             <script>
+                function loadAvailableProtonNetVersion() {
+                    const url = 'https://schema.protonnetserver.com/version.json';
+        
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            const protonNetVersionElement = document.getElementById('protonNetVersion');
+        
+                            if (protonNetVersionElement != null) {
+                                const lastValue = protonNetVersionElement.value;
+                                protonNetVersionElement.innerHTML = '';
+                                data.forEach(element => {
+                                    const option = document.createElement('option');
+                                    option.value = element.version;
+                                    option.textContent = element.name;
+
+                                    protonNetVersionElement.appendChild(option);
+                                });
+
+                                protonNetVersionElement.value = lastValue;
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching JSON:', error);
+                        });
+                }
+
                 const vscode = acquireVsCodeApi();
 
                 // Handle form submission
@@ -187,11 +216,27 @@ export class CreateSolutionFormWebView {
         );
 
         // Create README.md file here
-        let serverReadmeFullPath = path.join(serverFullPath, "README.md");
-        let serverReadmeFullPathDict = serverReadmeFullPath.replace(serverFullPath, data.location);
+        let serverFullPathRoot = path.join(serverFullPath, ".root");
+
+        let finalNamespaceSpls = finalNamespace.split('.');
+        let serverLowercase = (finalNamespaceSpls[finalNamespaceSpls.length - 1]).toLowerCase();
+
+        let serverReadmeFullPath = path.join(serverFullPathRoot, "README.md");
+        let serverReadmeFullPathDict = serverReadmeFullPath.replace(serverFullPathRoot, data.location);
         fs.writeFileSync(serverReadmeFullPathDict, fs.readFileSync(serverReadmeFullPath).toString()
             .replaceAll("__TargetFramework__", data.targetRuntime)
             .replaceAll("__Server__", finalNamespace)
+            .replaceAll("__ServerType__", data.projectType.replace("Server", ""))
+            .replaceAll("__ServerLowercase__", serverLowercase)
+        );
+
+        let serverDockerfileFullPath = path.join(serverFullPathRoot, "Dockerfile");
+        let serverDockerfileFullPathDict = serverDockerfileFullPath.replace(serverFullPathRoot, data.location);
+        fs.writeFileSync(serverDockerfileFullPathDict, fs.readFileSync(serverDockerfileFullPath).toString()
+            .replaceAll("__TargetFramework__", data.targetRuntime)
+            .replaceAll("__Server__", finalNamespace)
+            .replaceAll("__ServerType__", data.projectType.replace("Server", ""))
+            .replaceAll("__ProtonNetVersion__", data.protonNetVersion)
         );
 
         // create .vscode
@@ -205,18 +250,18 @@ export class CreateSolutionFormWebView {
                 "configurations": []
             };
             launchJson.configurations.push(JSON.parse(JSON.stringify({
-                "name": "Launch __ServerApplication__.Startup (Debug)",
+                "name": "Launch __Server__.Startup (Debug)",
                 "type": "coreclr",
                 "request": "launch",
-                "preLaunchTask": "build__ServerApplication__",
-                "program": "__ServerApplication__.Startup",
+                "preLaunchTask": "build__Server__",
+                "program": "__Server__.Startup",
                 "args": [],
-                "cwd": "${workspaceFolder}/__ServerApplication__/__ServerApplication__.Startup/bin/Debug/__TargetFramework__",
+                "cwd": "${workspaceFolder}/__Server__/__Server__.Startup/bin/Debug/__TargetFramework__",
                 "stopAtEntry": false,
                 "console": "internalConsole",
                 "justMyCode": true,
                 "internalConsoleOptions": "openOnSessionStart"
-            }).replaceAll("__ServerApplication__", finalNamespace).replaceAll("__TargetFramework__", data.targetRuntime)));
+            }).replaceAll("__Server__", finalNamespace).replaceAll("__TargetFramework__", data.targetRuntime)));
 
             fs.writeFileSync(launchPathDict, JSON.stringify(launchJson, null, 4));
         }
@@ -228,20 +273,20 @@ export class CreateSolutionFormWebView {
                 "tasks": []
             };
             tasksJson.tasks.push(JSON.parse(JSON.stringify({
-                "label": "build__ServerApplication__",
+                "label": "build__Server__",
                 "type": "process",
                 "command": "dotnet",
                 "args": [
                     "build",
-                    "${workspaceFolder}/__ServerApplication__/__ServerApplication__.Startup/__ServerApplication__.Startup.csproj"
+                    "${workspaceFolder}/__Server__/__Server__.Startup/__Server__.Startup.csproj"
                 ],
                 "problemMatcher": "$msCompile",
                 "group": {
                     "kind": "build",
                     "isDefault": true
                 },
-                "detail": "Generated task for building the __ServerApplication__ solution."
-            }).replaceAll("__ServerApplication__", finalNamespace)));
+                "detail": "Generated task for building the __Server__ solution."
+            }).replaceAll("__Server__", finalNamespace)));
 
             fs.writeFileSync(tasksPathDict, JSON.stringify(tasksJson, null, 4));
         }

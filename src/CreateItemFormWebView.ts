@@ -40,9 +40,9 @@ export class CreateItemFormWebView {
 
                         const itemName = document.getElementById('itemName').value;
                         const location = document.getElementById('location').value;
-                        let withModel = false;
+                        var withModel = false;
 
-                        let withModelObj = document.getElementById('withModel');
+                        const withModelObj = document.getElementById('withModel');
                         if (withModelObj) {
                             withModel = withModelObj.checked;
                         }

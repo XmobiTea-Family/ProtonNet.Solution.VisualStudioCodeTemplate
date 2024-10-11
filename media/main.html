@@ -190,16 +190,26 @@
             }
         }
     </style>
+
+    <script>
+        function onBodyLoad() {
+            const protonNetVersionElement = document.getElementById('protonNetVersion');
+            if (protonNetVersionElement !=  null) {
+                if (loadAvailableProtonNetVersion != null) loadAvailableProtonNetVersion();
+            }
+        }
+    </script>
+
 </head>
 
-<body>
+<body onload="onBodyLoad()">
     <main>
         @renderBody();
     </main>
 
     <footer>
         <p>
-			Copyright &copy; 2024 <a href="https://protonnetserver.com" target="_blank" style="color: #fff; text-decoration: none;">ProtonNet</a>
+			Copyright &copy; 2024 <a href="https://protonnetserver.com" target="_blank" style="color: #fff; text-decoration: none;">ProtonNet Server</a>
 		</p>
     </footer>
 </body>

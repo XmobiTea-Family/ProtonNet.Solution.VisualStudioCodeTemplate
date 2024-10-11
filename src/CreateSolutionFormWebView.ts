@@ -37,7 +37,9 @@ export class CreateSolutionFormWebView {
                 <!-- ProtonNet Version -->
                 <div class="form-group">
                     <label for="protonNetVersion">ProtonNet Version:</label>
-                    <input type="text" id="protonNetVersion" name="protonNetVersion" value="${data.protonNetVersion}" required />
+                    <select id="protonNetVersion" name="protonNetVersion" required>
+                        <option value="1.0.4" ${data.protonNetVersion == '1.0.4' ? 'selected' : ''}>1.0.4</option>
+                    </select>
                 </div>
 
                 <!-- Target Runtime Dropdown -->
@@ -63,6 +65,33 @@ export class CreateSolutionFormWebView {
             </form>
 
             <script>
+                function loadAvailableProtonNetVersion() {
+                    const url = 'https://schema.protonnetserver.com/version.json';
+        
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            const protonNetVersionElement = document.getElementById('protonNetVersion');
+        
+                            if (protonNetVersionElement != null) {
+                                const lastValue = protonNetVersionElement.value;
+                                protonNetVersionElement.innerHTML = '';
+                                data.forEach(element => {
+                                    const option = document.createElement('option');
+                                    option.value = element.version;
+                                    option.textContent = element.name;
+
+                                    protonNetVersionElement.appendChild(option);
+                                });
+
+                                protonNetVersionElement.value = lastValue;
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching JSON:', error);
+                        });
+                }
+
                 const vscode = acquireVsCodeApi();
 
                 // Handle form submission

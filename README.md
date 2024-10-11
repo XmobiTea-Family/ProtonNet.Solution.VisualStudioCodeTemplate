@@ -19,7 +19,7 @@ Two way to install ProtonNet Template for Visual Studio Code, using Visual Studi
 ---
 * Install from VSIX
   1. open `View/Extensions`
-  2. download the newest release ProtonNet Template for Visual Studio Code [Release](https://github.com/XmobiTea-Family/ProtonNet.Solution.VisualStudioCodeTemplate/releases)
+  2. download the newest release (example `protonnet-1.0.2.vsix`) ProtonNet Template for Visual Studio Code [Release](https://github.com/XmobiTea-Family/ProtonNet.Solution.VisualStudioCodeTemplate/releases)
   3. press `Install from VSIX...` like this picture then choose `ProtonNet Template` version, which you has download on step 2.
 
 ![alt text](images/image-9.png)

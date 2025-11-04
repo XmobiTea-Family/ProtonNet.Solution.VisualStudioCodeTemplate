@@ -6,7 +6,7 @@
 # ProtonNet Template for Visual Studio Code
 
 Welcome to the **ProtonNet** template for Visual Studio Code!  
-This tool is designed to streamline and optimize the development process for projects within the [ProtonNet Server](https://protonnetserver.com) ecosystem.
+This tool is designed to streamline and optimize the development process for projects within the [ProtonNet Server](https://protonserver.net) ecosystem.
 
 ## I. How to install
 Two way to install ProtonNet Template for Visual Studio Code, using Visual Studio Code:
@@ -51,7 +51,7 @@ Two way to install ProtonNet Template for Visual Studio Code, using Visual Studi
    - Select the `Project Type` you need: `SocketServer Solution` for a SocketServer project or `WebApiServer Solution` for a WebApiServer project. In this guide, we will demonstrate how to create a `SocketServer Solution`.
    - Enter your `Project Name` (e.g., **MyFirstSocketServer**).
    - Choose the `Location` for your project (we recommend leaving it as the default).
-   - Select the `ProtonNetVersion` from the available releases (see more [ProtonNet Releases](https://protonnetserver.com/release-note)).
+   - Select the `ProtonNetVersion` from the available releases (see more [ProtonNet Releases](https://protonserver.net/release-note)).
    - Set the `Target Runtime` for your project. We recommend using .NET 8.0.
    - Click `Create` to generate your project.
 
@@ -90,8 +90,8 @@ Two way to install ProtonNet Template for Visual Studio Code, using Visual Studi
 ### Version 1.0.0
 
 - **ProtonNet Tool Support**:
-  - Support for creating **SocketServer** projects under the [ProtonNet Server](https://protonnetserver.com) ecosystem.
-  - Support for creating **WebApiServer** projects under the [ProtonNet Server](https://protonnetserver.com) ecosystem.
+  - Support for creating **SocketServer** projects under the [ProtonNet Server](https://protonserver.net) ecosystem.
+  - Support for creating **WebApiServer** projects under the [ProtonNet Server](https://protonserver.net) ecosystem.
 
 - **File Generators**:
   - Quickly and easily generate **WebApiController** files.
